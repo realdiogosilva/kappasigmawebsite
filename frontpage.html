@@ -1,0 +1,418 @@
+<html>
+<script>
+	(function ($) {
+  $(function () {
+
+
+    $(window).on('scroll', function () {
+      fnOnScroll();
+    });
+
+    $(window).on('resize', function () {
+      fnOnResize();
+    });
+
+
+    var agTimeline = $('.js-timeline'),
+      agTimelineLine = $('.js-timeline_line'),
+      agTimelineLineProgress = $('.js-timeline_line-progress'),
+      agTimelinePoint = $('.js-timeline-card_point-box'),
+      agTimelineItem = $('.js-timeline_item'),
+      agOuterHeight = $(window).outerHeight(),
+      agHeight = $(window).height(),
+      f = -1,
+      agFlag = false;
+
+    function fnOnScroll() {
+      agPosY = $(window).scrollTop();
+
+      fnUpdateFrame();
+    }
+
+    function fnOnResize() {
+      agPosY = $(window).scrollTop();
+      agHeight = $(window).height();
+
+      fnUpdateFrame();
+    }
+
+    function fnUpdateWindow() {
+      agFlag = false;
+
+      agTimelineLine.css({
+        top: agTimelineItem.first().find(agTimelinePoint).offset().top - agTimelineItem.first().offset().top,
+        bottom: agTimeline.offset().top + agTimeline.outerHeight() - agTimelineItem.last().find(agTimelinePoint).offset().top
+      });
+
+      f !== agPosY && (f = agPosY, agHeight, fnUpdateProgress());
+    }
+
+    function fnUpdateProgress() {
+      var agTop = agTimelineItem.last().find(agTimelinePoint).offset().top;
+
+      i = agTop + agPosY - $(window).scrollTop();
+      a = agTimelineLineProgress.offset().top + agPosY - $(window).scrollTop();
+      n = agPosY - a + agOuterHeight / 2;
+      i <= agPosY + agOuterHeight / 2 && (n = i - a);
+      agTimelineLineProgress.css({height: n + "px"});
+
+      agTimelineItem.each(function () {
+        var agTop = $(this).find(agTimelinePoint).offset().top;
+
+        (agTop + agPosY - $(window).scrollTop()) < agPosY + .5 * agOuterHeight ? $(this).addClass('js-ag-active') : $(this).removeClass('js-ag-active');
+      })
+    }
+
+    function fnUpdateFrame() {
+      agFlag || requestAnimationFrame(fnUpdateWindow);
+      agFlag = true;
+    }
+
+
+  });
+})(jQuery);
+
+</script>
+<head>
+<link rel="stylesheet" href="styling.css">
+</head>
+<div class="ag-timeline-block">
+  <div class="ag-timeline_title-box">
+    <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/logo+ksig.png" width="396" height="170" />
+    <div class="ag-timeline_title">Rush Calendar</div>
+  </div>
+  <section class="ag-section">
+    <div class="ag-format-container">
+      <div class="js-timeline ag-timeline">
+        <div class="js-timeline_line ag-timeline_line">
+          <div class="js-timeline_line-progress ag-timeline_line-progress"></div>
+        </div>
+        <div class="ag-timeline_list">
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">28th</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">August</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+1.jpg" class="ag-timeline-card_img" width="640" height="360" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 13</div>
+                  <div class="ag-timeline-card_desc">
+                    Join the most diverse brotherhood on campus for a night of culture, music, and dance🕺 We officially announce our first event for this fall - KARNAVAL 💃a night of immersive latin experience 🌴
+
+We’re recreating the worlds largest party the Carnaval Festival at the first house on the left with cultural influences from Brazil 🇧🇷, Colombia 🇨🇴, Mexico 🇲🇽, Cuba 🇨🇺 & best believe our playlists match up 🎶
+
+Bring out your masques🎭, or arrive early as the first 100 people thru the door get a free masque!!🚨 Dont forget to wear your colourful shirts.
+
+First house on the left | 9pm | 2880 Wesbrook mall
+
+What you need: A valid UBC ID or evidence of enrolment
+
+Safety: If at any point you any need help,
+go to a person wearing KΣ letters and say “COBALT” to get immediate assistance. No glass bottles allowed 🚫🍾
+<br>
+<br>                   
+<a href="https://www.facebook.com/events/403246821797586"><img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+tag.png" alt="EVENT" style="width:229px;height:78px;"></a>
+                  </div>
+                  
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">2nd</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+2.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 12</div>
+                  <div class="ag-timeline-card_desc">
+                   Dear newest member of our UBC community, 
+                    WELCOME TO COLLEGE BABY :)
+<br>
+<br>                   
+<a href="https://www.facebook.com/events/403246821797586"><img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+tag.png" alt="EVENT" style="width:229px;height:78px;"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">6th</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/group+pictures.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 11</div>
+                  <div class="ag-timeline-card_desc">
+                   IMAGINE DAY BOOTH
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">9th</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+3.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 10</div>
+                  <div class="ag-timeline-card_desc">
+                    🚨 The Brothers of Kappa Sigma 🐺 cordially welcome you to our 38th annual BORA BORA 🏝, as we escape across the pacific and transform our house into our very own Love Island ☀️👙🕶
+
+With freshly imported sand ⛱ from the exotic lands of Abbotsford (Yes there will be sand*) and Palmy Trees 🌴 of Amazon.ca, get ready for an absolute movie 🎥
+
+* Valid UBC ID required for entry
+
+First house on the left | 9pm | 9th September
+                    
+<br>
+<br>                   
+<a href="https://www.facebook.com/events/403246821797586"><img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+tag.png" alt="EVENT" style="width:229px;height:78px;"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">10th</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event4.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 9</div>
+                  <div class="ag-timeline-card_desc">
+                    We understand the pain outside, but don’t recognise the pain within.
+
+In light of suicide prevention month, the brothers of the Epsilon-Epsilon chapter of Kappa Sigma would like to invite you to join us in supporting Suicide Prevention and raising awareness for mental health. 
+
+This watermelon themed philanthropy event is sure to show you A Melon Reasons Why suicide is never the answer. 
+
+More details of the event will be released in the upcoming days!
+                    
+<br>
+<br>                   
+<a href="https://www.facebook.com/events/403246821797586"><img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+tag.png" alt="EVENT" style="width:229px;height:78px;"></a>
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">15th</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+5.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 8</div>
+                  <div class="ag-timeline-card_desc">
+                    FIRST RUSH - First house on the left | 9pm | 15th September
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">25th</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+6.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 7</div>
+                  <div class="ag-timeline-card_desc">
+                    Second Rush - First house on the left | 9pm | 15th September
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">23rd</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/eveent+7.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 6</div>
+                  <div class="ag-timeline-card_desc">
+                                        Centurion - First house on the left | 9pm | 23rd September INVITE ONLY
+
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">25th</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+8.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 5</div>
+                  <div class="ag-timeline-card_desc">
+                    Formal Rush - First house on the left | 9pm | 25th September INVITE ONLY
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">September</div>
+              </div>
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">26th</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+9.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 4</div>
+                  <div class="ag-timeline-card_desc">
+                    Bids Day - First house on the left | 9pm | 26th September INVITE ONLY
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+          <div class="js-timeline_item ag-timeline_item">
+            <div class="ag-timeline-card_box">
+              <div class="js-timeline-card_point-box ag-timeline-card_point-box">
+                <div class="ag-timeline-card_point">RUSH</div>
+              </div>
+              <div class="ag-timeline-card_meta-box">
+                <div class="ag-timeline-card_meta">Information</div>
+              </div>
+            </div>
+            <div class="ag-timeline-card_item">
+              <div class="ag-timeline-card_inner">
+                <div class="ag-timeline-card_img-box">
+                  <img src="https://teamworkoutplatform.s3.us-west-2.amazonaws.com/event+10.jpg" class="ag-timeline-card_img" width="640" height="360" alt="" />
+                </div>
+                <div class="ag-timeline-card_info">
+                  <div class="ag-timeline-card_title">Season 3</div>
+                  <div class="ag-timeline-card_desc">
+                  Are you interested in rush? Feel free to sign up using the link in our bio or reach out to any of our rush chairmen with any questions you may have!
+
+Bela @belamaetzel
+Massimo @massimojr_beltramo
+KAPPA SIGMA @kappasigmaubc
+                  </div>
+                </div>
+              </div>
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+
+              <div class="ag-timeline-card_arrow"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</html
